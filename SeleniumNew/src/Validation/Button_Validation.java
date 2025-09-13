@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Button_Validation
 {
         public static void main(String[] args) {
+            labelValidations();
         }
 
         public static void labelValidations(){
@@ -15,7 +16,7 @@ public class Button_Validation
             try{
                 oBrowser = new ChromeDriver();
                 oBrowser.manage().window().maximize();
-                oBrowser.navigate().to("file:///E:/MorningBatch_Combined/HTML/Webpage/SampleWebPage.html");
+                oBrowser.navigate().to("file:///M:/HTMLWorkspace/SmpleWebPage.html");
                 Thread.sleep(2000);
 
                 //1. Exist Or not?
