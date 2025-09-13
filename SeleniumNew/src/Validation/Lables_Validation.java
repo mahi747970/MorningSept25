@@ -5,31 +5,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Labels_Validation {
-    public class Labels_Validations {
+public class Lables_Validation {
         public static void main(String[] args) {
             labelValidations();
         }
 
-        public static void labelValidations() {
+        public static void labelValidations(){
             WebDriver oBrowser = null;
-            try {
+            try{
                 oBrowser = new ChromeDriver();
                 oBrowser.manage().window().maximize();
-                oBrowser.navigate().to("file:///E:/MorningBatch_Combined/HTML/Webpage/SampleWebPage.html");
+                oBrowser.navigate().to("file:///M:/HTMLWorkspace/SmpleWebPage.html");
                 Thread.sleep(2000);
 
                 //1. Exist Or not?
                 System.out.println("*****************Verify element exist OR not**********************");
-                if (oBrowser.findElement(By.xpath("//h1[text()='Header One']")).isDisplayed()) {
+                if(oBrowser.findElement(By.xpath("//h1[text()='Header One']")).isDisplayed()){
                     System.out.println("The Header exist");
-                } else {
+                }else{
                     System.out.println("Failed to find the header");
                 }
 
-                if (oBrowser.findElements(By.xpath("//h1[text()='Header One']")).size() > 0) {
+                if(oBrowser.findElements(By.xpath("//h1[text()='Header One']")).size() > 0){
                     System.out.println("The Header exist");
-                } else {
+                }else{
                     System.out.println("Failed to find the header");
                 }
 
@@ -37,7 +36,7 @@ public class Labels_Validation {
                 //2. Read
                 System.out.println("*****************Read the text from the header*****************");
                 String strText = oBrowser.findElement(By.xpath("//p[contains(text(), 'One')]")).getText();
-                if (strText.equals("Sample paragraphs One")) System.out.println("The paragraph value is correct");
+                if(strText.equals("Sample paragraphs One")) System.out.println("The paragraph value is correct");
                 else System.out.println("Invalid paragraph content");
 
 
@@ -58,13 +57,13 @@ public class Labels_Validation {
                 //5. enabled/disabled
                 System.out.println("*****************Verify element is enabled/not*****************");
                 oEle = oBrowser.findElement(By.xpath("//h1[text()='Header One']"));
-                if (oEle.isEnabled()) System.out.println("Element is enabled");
+                if(oEle.isEnabled()) System.out.println("Element is enabled");
                 else System.out.println("Element is disabled");
-            } catch (Exception e) {
+            }catch(Exception e){
                 e.printStackTrace();
-            } finally {
+            }finally{
                 oBrowser = null;
             }
         }
     }
-}
+
