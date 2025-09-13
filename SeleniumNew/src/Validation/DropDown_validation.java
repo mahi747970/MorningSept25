@@ -101,7 +101,6 @@ public class DropDown_validation
                 System.out.println(allItems.get(i).getText());
             }
 
-
             //10. How to unselect the multiselect values from multi-select dropdown?
             System.out.println("*****How to unselect the multiselect values from multi-select dropdown?***");
             oSelect.deselectAll();
