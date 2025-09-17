@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.io.FileInputStream;
 import java.util.*;
+
 
 public class ReusableMethods {
     public static void main(String[] args) {
@@ -158,7 +158,7 @@ public class ReusableMethods {
 
 
     /************************
-     * Method            : deleteUser()
+     * Method            : deleteUser()+
      * Purpose           : This method deletes the user in actiTime
      * Parameters        : WebDriver oBrowser, String userName
      * Return Type       : boolean
