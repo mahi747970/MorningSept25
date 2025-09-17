@@ -35,12 +35,13 @@ public class TestScript extends ReusableMethods {
             blnRes = logoutFromActiTime(oBrowser);
 
         } catch (Exception e) {
-            System.out.println("Excption in 'TS_LoginLogout()'test script");
+            System.out.println("Excption in 'TS_CreatDeleteUser()'test script");
         } finally {
             oBrowser.close();
             oBrowser = null;
         }
     }
+
 }
 
 
