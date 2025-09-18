@@ -1,4 +1,4 @@
-package scripting3;
+package scripting3_Excle;
 
 
 import org.openqa.selenium.WebDriver;
@@ -8,14 +8,14 @@ import java.util.Map;
 public class TestScript extends ReusableMethods {
     public static void main(String[] args) {
         TS_LoginLogout();
-        //TS_CreatDeleteUser();
+        TS_CreatDeleteUser();
     }
 
     public static void TS_LoginLogout() {
         WebDriver oBrowser = null;
         Map<String, String> data = null;
         try {
-            data = getPropData("TestData");
+            data = getExcelData("TestData","TestData","TC_ID_001");
             oBrowser = launchBrowser(data.get("browserName"));
             boolean blnRes = navigateURL(oBrowser, data.get("url"));
             blnRes = loginToApplication(oBrowser, data.get("userName"), data.get("password"));
@@ -33,7 +33,7 @@ public class TestScript extends ReusableMethods {
         WebDriver oBrowser = null;
         Map<String, String> data = null;
         try {
-            data = getPropData("TestData");
+            data = getExcelData("TestData","TestData","TC_ID_001");
             oBrowser = launchBrowser(data.get("browserName"));
             boolean blnRes = navigateURL(oBrowser, data.get("url"));
             blnRes = loginToApplication(oBrowser, data.get("userName"), data.get("password"));
