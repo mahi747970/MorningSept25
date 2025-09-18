@@ -1,14 +1,14 @@
-package scripting3;
-
+package scripting4;
 
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
+
 public class TestScript extends ReusableMethods {
     public static void main(String[] args) {
         TS_LoginLogout();
-        //TS_CreatDeleteUser();
+        TS_CreatDeleteUser();
     }
 
     public static void TS_LoginLogout() {
