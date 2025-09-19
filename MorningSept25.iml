@@ -7,6 +7,51 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Webdreiver" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/Jcommander" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/Jcommander" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/Webdreiver" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/Webdreiver" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/Webdreiver" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/Webdreiver" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/TestNG" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/TestNG" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/TestNG" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/TestNG" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/SeleniumNew/Library/poi" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/SeleniumNew/Library/poi" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
