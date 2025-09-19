@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="TestNG">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/SeleniumNew/Library/TestNG" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/SeleniumNew/Library/TestNG" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/SeleniumNew/Library/TestNG" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/SeleniumNew/Library/TestNG" recursive="false" type="SOURCES" />
+  </library>
+</component>

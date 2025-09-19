@@ -1,6 +1,7 @@
-package scripting3;
+package scripting3_Excle;
 
-
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +9,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileInputStream;
-import java.util.*;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReusableMethods {
     public static void main(String[] args) {
@@ -223,32 +226,97 @@ public class ReusableMethods {
      * Return Type       : Map<String, String>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      * Author Name       :
      *************************/
-    public static Map<String, String> getPropData(String propFileName){
+    public static Map<String, String> getExcelData(String fileNameFile, String sheetName, String logicalName){
         FileInputStream fin = null;
-        Properties prop = null;
         Map<String, String> objMap = null;
+        Workbook wb = null;
+        Sheet sh = null;
+        Row row1 = null;
+        Row row2 = null;
+        Cell cell1 = null;
+        Cell cell2 = null;
+        Calendar cal = null;
+        String sKey = null;
+        String sValue = null;
+        int rowNum = 0;
+        int colNum = 0;
         try{
-            objMap = new HashMap<>();
-            fin = new FileInputStream(System.getProperty("user.dir")+"\\testData\\"+propFileName+".properties");
-            prop = new Properties();
-            prop.load(fin);
+            objMap = new HashMap<String, String>();
+            fin = new FileInputStream(System.getProperty("user.dir")+"\\testData\\"+fileNameFile+".xlsx");
+            wb = new XSSFWorkbook(fin);
+            sh = wb.getSheet(sheetName);
 
-            Set<Map.Entry<Object, Object>> oData = prop.entrySet();
-            Iterator<Map.Entry<Object, Object>> it = oData.iterator();
-            while(it.hasNext()){
-                Map.Entry<Object, Object> mp = it.next();
-                objMap.put(mp.getKey().toString(), mp.getValue().toString());
+            if(sh == null){
+                System.out.println("The '"+sheetName+"' sheet doesnot exist");
+                return null;
+            }
+
+            //find the row Number in which the given logical name exist
+            int rowNumber = sh.getPhysicalNumberOfRows();
+            for(int r=0; r<rowNumber; r++){
+                row1 = sh.getRow(r);
+                cell1 = row1.getCell(0);
+                if(cell1.getStringCellValue().equalsIgnoreCase(logicalName)){
+                    rowNum = r;
+                    break;
+                }
+            }
+
+            if(rowNum > 0){
+                row1 = sh.getRow(0);
+                row2 = sh.getRow(rowNum);
+
+                colNum = row1.getPhysicalNumberOfCells();
+                for(int c=0; c<colNum; c++){
+                    cell1 = row1.getCell(c);
+                    sKey = cell1.getStringCellValue();
+
+                    cell2 = row2.getCell(c);
+                    switch(cell2.getCellType()){
+                        case STRING:
+                            sValue = cell2.getStringCellValue();
+                            break;
+                        case BLANK:
+                            sValue = "";
+                            break;
+                        case BOOLEAN:
+                            sValue = String.valueOf(cell2.getBooleanCellValue());
+                            break;
+                        case NUMERIC:
+                            if(DateUtil.isCellDateFormatted(cell2)){
+                                double dt = cell2.getNumericCellValue();
+                                cal = Calendar.getInstance();
+                                cal.setTime(DateUtil.getJavaDate(dt));
+                                sValue = cal.get(Calendar.DAY_OF_MONTH) + "/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.YEAR);
+
+                            }else{
+                                sValue = String.valueOf(cell2.getNumericCellValue());
+                            }
+                            break;
+                    }
+                    objMap.put(sKey, sValue);
+                }
+            }else{
+                System.out.println("Failed to find the logicalNam '"+logicalName+"'");
+                return null;
             }
             return objMap;
         }catch(Exception e){
-            System.out.println("Exception in the 'getPropData()' method. "+ e);
+            System.out.println("Exception in the 'getExcelData()' method. "+ e);
             return null;
         }finally
         {
             try{
                 fin.close();
                 fin = null;
-                prop = null;
+                cell1 = null;
+                cell2 = null;
+                row1 = null;
+                row2 = null;
+                sh = null;
+                wb.close();
+                wb = null;
+                cal = null;
             }catch(Exception e){}
         }
     }
